@@ -1,0 +1,33 @@
+.MyLastCards .monthSelect{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.MyLastCards .monthSelect .iconContainer{
+    display: flex;
+    align-items: center;
+    background-color: #d6d6d6;
+    cursor: pointer;
+    border-radius: 0.2em;
+}
+
+.MyLastCards .monthSelect p{
+    user-select: none;
+}
+
+.MyLastCards .monthSelect .iconContainer:last-of-type svg{
+    rotate: 180deg;
+}
+
+.MyLastCards .container .cards{
+    margin: 2em auto;
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    flex-wrap: wrap;
+
+    width: fit-content;
+}
