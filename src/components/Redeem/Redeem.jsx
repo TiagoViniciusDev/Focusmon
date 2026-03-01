@@ -4,6 +4,9 @@ import Card from '../Card/Card';
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
 
+import { supabase } from '../../supabaseClient'
+
+
 import pokemons from "../../data/pokemons.json";
 
 function Redeem() {
@@ -40,7 +43,26 @@ function Redeem() {
     // setNumero(numeroAleatorio)
 
     setNumero(2)
+
+    addItem({
+      "id": 1, 
+      "date": "2026-02-28", 
+      "text": "ABC"
+    })
+
     setShowPrize(true)
+  }
+
+  async function addItem(item) { //Adiciona a base de dados
+    const { data, error } = await supabase
+      .from('MyCards')
+      .insert([item])
+
+    if (error) {
+      console.log("Erro:", error.message)
+    }
+
+    return data
   }
 
   return (

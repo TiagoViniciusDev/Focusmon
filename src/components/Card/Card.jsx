@@ -2,7 +2,6 @@ import './Card.css'
 
 function Card({id, name, date, img, types, text}){
 
-  console.log(name)
   return (
     <div className='Card'>
         <p className='date'>{date}</p>
