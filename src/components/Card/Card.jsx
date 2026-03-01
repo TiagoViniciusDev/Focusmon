@@ -2,6 +2,19 @@ import './Card.css'
 
 function Card({id, name, date, img, types, text}){
 
+  let pokemonNumber
+
+  if(id < 10){
+    pokemonNumber = `#000${id}` //#0009
+  } else if(id < 100){
+    pokemonNumber = `#00${id}` //#0099
+  } else if(id < 1000){
+    pokemonNumber = `#0${id}` //#0999
+  } else{
+    pokemonNumber = `#${id}` //#9999
+  }
+
+
   return (
     <div className='Card'>
         <p className='date'>{date}</p>
@@ -9,11 +22,12 @@ function Card({id, name, date, img, types, text}){
         <div className='info'>
             <div className='headerInfo'>
                 <p>{name}</p>
-                <p>#00{id}</p>
+                <p>{pokemonNumber}</p>
             </div>
             <div className='types'>
-                <p>{types[0]}</p>
-                <p>{types[1]}</p>
+                {types.map((type) => (
+                    <p key={type}>{type}</p>
+                ))}
             </div>
         </div>
         <div className='textCard'>

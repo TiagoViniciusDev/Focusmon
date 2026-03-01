@@ -2,7 +2,7 @@ import './Redeem.css'
 import Card from '../Card/Card';
 
 import { useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { supabase } from '../../supabaseClient'
 
@@ -30,25 +30,23 @@ function Redeem() {
   const numerosProibidos = new Set([3, 7, 15, 120, 999]);
 
   function gerarNumero(){ //Gera um número aleatório
-    // const min = 0;
-    // const max = 1349;
+    const min = 1;
+    const max = 1024;
 
-    // let numeroAleatorio;
+    let numeroAleatorio;
 
-    // do {
-    //   numeroAleatorio =
-    //     Math.floor(Math.random() * (max - min + 1)) + min
-    // } while (numerosProibidos.has(numeroAleatorio))
+    do {
+      numeroAleatorio =
+        Math.floor(Math.random() * (max - min + 1)) + min
+    } while (numerosProibidos.has(numeroAleatorio))
 
-    // setNumero(numeroAleatorio)
+    setNumero(numeroAleatorio - 1) //Subtrai um por se tratar de indice
 
-    setNumero(2)
-
-    addItem({
-      "id": 1, 
-      "date": "2026-02-28", 
-      "text": "ABC"
-    })
+    // addItem({
+    //   "id": 1, 
+    //   "date": "2026-02-28", 
+    //   "text": "ABC"
+    // })
 
     setShowPrize(true)
   }

@@ -17,10 +17,10 @@
 
 .Card .date{
     position: absolute;
-    top: 0.5em;
+    top: 0.6em;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.7em;
+    font-size: 0.6em;
 }
 
 .Card img{
@@ -39,6 +39,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1em;
+    font-size: 0.8em;
 }
 
 .Card .info .types{
@@ -56,6 +57,7 @@
     text-transform: uppercase;
     font-weight: 600;
     color: white;
+    font-size: 0.7em;
 }
 
 .Card .textCard{
