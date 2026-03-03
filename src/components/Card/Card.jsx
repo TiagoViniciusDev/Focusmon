@@ -1,6 +1,16 @@
 import './Card.css'
 
-function Card({id, name, date, img, types, text}){
+import pokemon from "../../data/pokemons.json"
+
+function Card({id, date, text}){
+
+  // {id, name, date, img, types, text}
+
+  // let {name, img, types} = pokemon[id - 1]
+
+  let name = pokemon[id - 1].name
+  let img = pokemon[id - 1].images.sprites.default
+  let types = pokemon[id - 1].types
 
   let pokemonNumber
 
@@ -47,7 +57,6 @@ function Card({id, name, date, img, types, text}){
                 <p>{pokemonNumber}</p>
             </div>
             <div className='types'>
-              {console.log(types)}
                 {types.map((type) => (
                     <p key={type} style={{backgroundColor: typeColor[type.toLowerCase()]}}>{type}</p>
                 ))}
