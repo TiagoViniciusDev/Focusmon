@@ -18,7 +18,7 @@ function Card({id, name, date, img, types, text}){
     "normal": "#A8A77A",
     "fighting": "#C22E28",
     "flying": "#A98FF3",
-    "posion": "#A33EA1",
+    "poison": "#A33EA1",
     "ground": "#E2BF65",
     "rock": "#B6A136",
     "bug": "#A6B91A",

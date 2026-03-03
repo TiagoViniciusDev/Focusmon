@@ -15,13 +15,12 @@ function MyLastCards() {
           </div>
 
           <div className='cards'>
-            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["Grass", "Posion"]} text="ABC"/>
-            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["Grass", "Posion"]} text="ABC"/>
-            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["Grass", "Posion"]} text="ABC"/>
-            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["Grass", "Posion"]} text="ABC"/>
-            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["Grass", "Posion"]} text="ABC"/>
-            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["Grass", "Posion"]} text="ABC"/>
-            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["Grass", "Posion"]} text="ABC"/>
+            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["grass", "poison"]} text="ABC"/>
+            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["grass", "poison"]} text="ABC"/>
+            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["grass", "poison"]} text="ABC"/>
+            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["grass", "poison"]} text="ABC"/>
+            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["grass", "poison"]} text="ABC"/>
+            <Card id={1} name="Bulbasaur" date="28/02/2026" img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" types={["grass", "poison"]} text="ABC"/>
           </div>
 
         </div>
