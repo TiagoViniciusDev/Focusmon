@@ -8,6 +8,7 @@
     border-radius: var(--cardBorderRadius);
     width: fit-content;
     position: relative;
+    background-color: white;
 }
 
 /* .Card:hover{
@@ -53,7 +54,7 @@
 .Card .info .types p{
     border-radius: 0.3em;
     padding: 0.2em 0.5em;
-    background-color: green;
+    background-color: black;
     text-transform: uppercase;
     font-weight: 600;
     color: white;

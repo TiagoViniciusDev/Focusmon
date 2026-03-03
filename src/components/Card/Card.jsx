@@ -14,6 +14,28 @@ function Card({id, name, date, img, types, text}){
     pokemonNumber = `#${id}` //#9999
   }
 
+  let typeColor = {
+    "normal": "#A8A77A",
+    "fighting": "#C22E28",
+    "flying": "#A98FF3",
+    "posion": "#A33EA1",
+    "ground": "#E2BF65",
+    "rock": "#B6A136",
+    "bug": "#A6B91A",
+    "ghost": "#735797",
+    "steel": "#B7B7CE",
+    "fire": "#EE8130",
+    "water": "#6390F0",
+    "grass": "#7AC74C",
+    "electric": "#F7D02C",
+    "psychic": "#F95587",
+    "ice": "#96D9D6",
+    "dragon": "#6F35FC",
+    "dark": "#705746",
+    "fairy": "#D685AD",
+    "stellar": "#4466FF",
+    "unknown": "#6E6E6E"
+  }
 
   return (
     <div className='Card'>
@@ -25,8 +47,9 @@ function Card({id, name, date, img, types, text}){
                 <p>{pokemonNumber}</p>
             </div>
             <div className='types'>
+              {console.log(types)}
                 {types.map((type) => (
-                    <p key={type}>{type}</p>
+                    <p key={type} style={{backgroundColor: typeColor[type.toLowerCase()]}}>{type}</p>
                 ))}
             </div>
         </div>
