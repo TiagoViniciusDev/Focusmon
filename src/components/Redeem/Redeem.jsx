@@ -23,8 +23,7 @@ function Redeem() {
 
   const [data, setData] = useState(dataAtual)
 
-
-  const [numero, setNumero] = useState(2);
+  const [numero, setNumero] = useState(null);
 
   //Números que não podem ser sorteados
   const numerosProibidos = new Set([3, 7, 15, 120, 999]);
@@ -40,13 +39,13 @@ function Redeem() {
         Math.floor(Math.random() * (max - min + 1)) + min
     } while (numerosProibidos.has(numeroAleatorio))
 
-    setNumero(numeroAleatorio - 1) //Subtrai um por se tratar de indice
+    setNumero(numeroAleatorio)
 
-    // addItem({
-    //   "id": 1, 
-    //   "date": "2026-02-28", 
-    //   "text": "ABC"
-    // })
+    addItem({
+      "id": numeroAleatorio,
+      "date": data, 
+      "text": "ABC"
+    })
 
     setShowPrize(true)
   }
@@ -58,6 +57,7 @@ function Redeem() {
 
     if (error) {
       console.log("Erro:", error.message)
+      alert("Erro ao resgatar carta")
     }
 
     return data
@@ -83,7 +83,7 @@ function Redeem() {
         <div className='yourPrize' style={showPrize ? {} : {display: 'none'}}>
           <p>Parabéns!</p>
           <p>Nova carta desbloqueada</p>
-          <Card id={pokemons[numero].id} name={pokemons[numero].name} date={data} img={pokemons[numero].images.sprites.default} types={pokemons[numero].types} text="ABC"/>
+          {numero ? (<Card id={numero} date={data} text="ABC"/>) : (<p>Não foi possivel carregar sua carta</p>)}
           <button onClick={() => {navigate("/")}}>Confirmar</button>
         </div>
       </div>

@@ -33,7 +33,7 @@ function MyLastCards() {
     setMyCards(data)
   }
 
-  console.log(myCards)
+  // console.log(myCards)
 
   return (
     <div className='MyLastCards'>
