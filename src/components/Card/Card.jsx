@@ -4,14 +4,17 @@ import pokemon from "../../data/pokemons.json"
 
 function Card({id, date, text, shiny}){
 
-  // {id, name, date, img, types, text}
-
-  // let {name, img, types} = pokemon[id - 1]
-
   let name = pokemon[id - 1].name
   let img = shiny ? pokemon[id - 1].images.sprites.shiny : pokemon[id - 1].images.sprites.default
   let types = pokemon[id - 1].types
 
+  date = formatDate(date)
+
+  function formatDate(dateString) {
+    return new Date(dateString).toLocaleDateString('pt-BR')
+  }
+
+  //Formatação do número do pokemon
   let pokemonNumber
 
   if(id < 10){
@@ -24,6 +27,7 @@ function Card({id, date, text, shiny}){
     pokemonNumber = `#${id}` //#9999
   }
 
+  //Cores de cada tipo
   let typeColor = {
     "normal": "#A8A77A",
     "fighting": "#C22E28",
