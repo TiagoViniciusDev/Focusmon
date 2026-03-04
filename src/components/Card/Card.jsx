@@ -2,14 +2,14 @@ import './Card.css'
 
 import pokemon from "../../data/pokemons.json"
 
-function Card({id, date, text}){
+function Card({id, date, text, shiny}){
 
   // {id, name, date, img, types, text}
 
   // let {name, img, types} = pokemon[id - 1]
 
   let name = pokemon[id - 1].name
-  let img = pokemon[id - 1].images.sprites.default
+  let img = shiny ? pokemon[id - 1].images.sprites.shiny : pokemon[id - 1].images.sprites.default
   let types = pokemon[id - 1].types
 
   let pokemonNumber
@@ -53,6 +53,7 @@ function Card({id, date, text}){
         <img src={img} alt="Bulbasaur" />
         <div className='info'>
             <div className='headerInfo'>
+                {shiny ? (<p className='shiny'>Shiny</p>) : <p></p>}
                 <p>{name}</p>
                 <p>{pokemonNumber}</p>
             </div>

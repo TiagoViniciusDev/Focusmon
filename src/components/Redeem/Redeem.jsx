@@ -1,13 +1,10 @@
 import './Redeem.css'
 import Card from '../Card/Card';
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import { supabase } from '../../supabaseClient'
-
-
-import pokemons from "../../data/pokemons.json";
 
 function Redeem() {
 
@@ -15,18 +12,17 @@ function Redeem() {
 
   const [redeem, setRedeem] = useState(false)
   const [showPrize, setShowPrize] = useState(false)
+  const [currentDate, setCurrentDate] = useState()
+  const [numero, setNumero] = useState(null)
+  const [allShinyCards, setAllShinyCards] = useState()
 
-  // Pega a data atual
-  const hoje = new Date();
-  hoje.setMinutes(hoje.getMinutes() - hoje.getTimezoneOffset());
-  const dataAtual = hoje.toISOString().split("T")[0];
+  useEffect(() => {
+    getCurrentDate()
+    getAllShiny()
+  },[])
 
-  const [data, setData] = useState(dataAtual)
-
-  const [numero, setNumero] = useState(null);
-
-  //Números que não podem ser sorteados
-  const numerosProibidos = new Set([3, 7, 15, 120, 999]);
+  //Números que não podem ser sorteados (cartas shiny)
+  const numerosProibidos = new Set(allShinyCards);
 
   function gerarNumero(){ //Gera um número aleatório
     const min = 1;
@@ -41,18 +37,34 @@ function Redeem() {
 
     setNumero(numeroAleatorio)
 
-    addItem({
-      "id": numeroAleatorio,
-      "date": data, 
-      "text": "ABC"
-    })
+    handleCheck()
+
+    async function handleCheck() {
+      const exists = await checkIfExists(numeroAleatorio)
+
+      let table
+
+      if (exists) {
+        console.log("ID já existe no banco")
+        table = "MyShinyCards"
+      } else {
+        console.log("ID não existe")
+        table = "MyCards"
+      }
+
+      addItem({
+        "id": numeroAleatorio,
+        "date": currentDate, 
+        "text": "ABC"
+      }, table)
+    }
 
     setShowPrize(true)
   }
 
-  async function addItem(item) { //Adiciona a base de dados
+  async function addItem(item, table) { //Adiciona a base de dados
     const { data, error } = await supabase
-      .from('MyCards')
+      .from(table)
       .insert([item])
 
     if (error) {
@@ -61,6 +73,44 @@ function Redeem() {
     }
 
     return data
+  }
+
+  async function getAllShiny(){
+    const { data, error } = await supabase.from('MyShinyCards').select('id').order('id', { ascending: true })
+
+      if (error) {
+        console.log(error)
+        alert("Erro ao carregar pokemons shiny")
+      }
+
+      // transforma em array simples
+      const shinyIds = data.map(item => item.id)
+
+      setAllShinyCards(shinyIds)
+    }
+
+  // Pega a data atual
+  function getCurrentDate(){
+    const hoje = new Date();
+    hoje.setMinutes(hoje.getMinutes() - hoje.getTimezoneOffset());
+    const dataAtual = hoje.toISOString().split("T")[0];
+    setCurrentDate(dataAtual)
+  }
+
+  //Verifica se o id existe no banco
+  async function checkIfExists(cardId) {
+    const { data, error } = await supabase
+      .from('MyCards')
+      .select('id')
+      .eq('id', cardId)
+      .limit(1)
+
+    if (error) {
+      console.log(error)
+      return false
+    }
+
+    return data.length > 0
   }
 
   return (
@@ -73,7 +123,7 @@ function Redeem() {
 
         <div className='confirmation question' style={redeem ? (showPrize ? {display: 'none'} : {}) : {display: 'none'}}>
           <p>Selecione o dia de resgate</p>
-          <input type="date" value={data} onChange={(e) => setData(e.target.value)}/>
+          <input type="date" value={currentDate} onChange={(e) => setCurrentDate(e.target.value)}/>
           <div className='options'>
             <button onClick={() => {setRedeem(false)}}>Cancelar</button>
             <button onClick={gerarNumero}>Resgatar</button>
@@ -83,7 +133,7 @@ function Redeem() {
         <div className='yourPrize' style={showPrize ? {} : {display: 'none'}}>
           <p>Parabéns!</p>
           <p>Nova carta desbloqueada</p>
-          {numero ? (<Card id={numero} date={data} text="ABC"/>) : (<p>Não foi possivel carregar sua carta</p>)}
+          {numero ? (<Card id={numero} date={currentDate} text="ABC"/>) : (<p>Não foi possivel carregar sua carta</p>)}
           <button onClick={() => {navigate("/")}}>Confirmar</button>
         </div>
       </div>

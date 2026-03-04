@@ -33,6 +33,7 @@
 
 .Card .info{
     padding: 0.5em 0.5em;
+    position: relative;
 }
 
 .Card .info .headerInfo{
@@ -41,6 +42,20 @@
     justify-content: space-between;
     gap: 1em;
     font-size: 0.8em;
+    /* position: relative; */
+}
+
+.Card .info .headerInfo .shiny{
+    position: absolute;
+    top: -1.3em;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #C22E28;
+    padding: 0.2em 0.5em;
+    border-radius: 0.2em;
+    font-size: 0.7em;
+    font-weight: 700;
+    color: white;
 }
 
 .Card .info .types{
