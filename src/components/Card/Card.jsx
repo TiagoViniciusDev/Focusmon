@@ -11,7 +11,8 @@ function Card({id, date, text, shiny}){
   date = formatDate(date)
 
   function formatDate(dateString) {
-    return new Date(dateString).toLocaleDateString('pt-BR')
+      const [year, month, day] = dateString.split('-')
+      return `${day}/${month}/${year}`
   }
 
   //Formatação do número do pokemon
@@ -57,7 +58,7 @@ function Card({id, date, text, shiny}){
         <img src={img} alt="Bulbasaur" />
         <div className='info'>
             <div className='headerInfo'>
-                {shiny ? (<p className='shiny'>Shiny</p>) : <p></p>}
+                {shiny ? (<p className='shiny'>Shiny</p>) : <></>}
                 <p>{name}</p>
                 <p>{pokemonNumber}</p>
             </div>
