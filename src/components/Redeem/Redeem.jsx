@@ -22,6 +22,8 @@ function Redeem() {
   },[])
 
   //Números que não podem ser sorteados (cartas shiny)
+  //Se o id de uma carta for sorteado pela segunda vez você recebe essa carta na versão shiny
+  //Se você já tiver uma carta shiny significa que ela já foi sorteada 2 vezes e não pode mais ser sorteada
   const numerosProibidos = new Set(allShinyCards);
 
   function gerarNumero(){ //Gera um número aleatório

@@ -1,8 +1,13 @@
 import './Card.css'
 
+import { useContext } from 'react';
+import { GlobalContext } from '../../context/globalContext';
+
 import pokemon from "../../data/pokemons.json"
 
 function Card({id, date, text, shiny}){
+
+  const {flip} = useContext(GlobalContext)
 
   let name = pokemon[id - 1].name
   let img = shiny ? pokemon[id - 1].images.sprites.shiny : pokemon[id - 1].images.sprites.default
@@ -68,7 +73,7 @@ function Card({id, date, text, shiny}){
                 ))}
             </div>
         </div>
-        <div className='textCard'>
+        <div className='textCard' style={flip ? {display: 'block'} : {display: 'none'}}>
             <p>{text}</p>
         </div>
     </div>

@@ -85,4 +85,5 @@
     height: 100%;
     background-color: white;
     border-radius: var(--cardBorderRadius);
+    padding: 1em;
 }
