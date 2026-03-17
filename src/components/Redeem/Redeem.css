@@ -17,14 +17,31 @@
     cursor: pointer;
 }
 
-.Redeem .container .confirmation input{
+.Redeem .container .confirmation .questionsContainer{
     margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.Redeem .container .confirmation .questionsContainer input{
+    padding: 0.2em;
+}
+
+.Redeem .container .confirmation .questionsContainer textarea{
+    min-height: 10em;
+    padding: 0.5em 0.2em;
+    resize: none;
 }
 
 .Redeem .container .confirmation .options{
     display: flex;
     gap: 0.5em;
     justify-content: center;
+}
+
+.Redeem .container .confirmation .options button{
+    margin-top: 0.7em;
 }
 
 .Redeem .container .yourPrize{

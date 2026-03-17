@@ -13,6 +13,7 @@ function Redeem() {
   const [redeem, setRedeem] = useState(false)
   const [showPrize, setShowPrize] = useState(false)
   const [currentDate, setCurrentDate] = useState()
+  const [userText, setUserText] = useState()
   const [numero, setNumero] = useState(null)
   const [allShinyCards, setAllShinyCards] = useState()
 
@@ -57,7 +58,7 @@ function Redeem() {
       addItem({
         "id": numeroAleatorio,
         "date": currentDate, 
-        "text": "ABC"
+        "text": userText
       }, table)
     }
 
@@ -123,19 +124,22 @@ function Redeem() {
           <button onClick={() => {setRedeem(true)}}>Resgatar</button>
         </div>
 
-        <div className='confirmation question' style={redeem ? (showPrize ? {display: 'none'} : {}) : {display: 'none'}}>
+        <form onSubmit={(e) => {e.preventDefault()}} className='confirmation question' style={redeem ? (showPrize ? {display: 'none'} : {}) : {display: 'none'}}>
           <p>Selecione o dia de resgate</p>
-          <input type="date" value={currentDate} onChange={(e) => setCurrentDate(e.target.value)}/>
+          <div className='questionsContainer'>
+            <input type="date" value={currentDate} onChange={(e) => setCurrentDate(e.target.value)}/>
+            <textarea onChange={(e) => {setUserText(e.target.value)}} placeholder='Insira sua mensagem'></textarea>
+          </div>
           <div className='options'>
             <button onClick={() => {setRedeem(false)}}>Cancelar</button>
             <button onClick={gerarNumero}>Resgatar</button>
           </div>
-        </div>
+        </form>
 
         <div className='yourPrize' style={showPrize ? {} : {display: 'none'}}>
           <p>Parabéns!</p>
           <p>Nova carta desbloqueada</p>
-          {numero ? (<Card id={numero} date={currentDate} text="ABC"/>) : (<p>Não foi possivel carregar sua carta</p>)}
+          {numero ? (<Card id={numero} date={currentDate} text={userText}/>) : (<p>Não foi possivel carregar sua carta</p>)}
           <button onClick={() => {navigate("/")}}>Confirmar</button>
         </div>
       </div>
