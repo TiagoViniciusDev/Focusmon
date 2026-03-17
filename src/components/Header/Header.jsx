@@ -10,7 +10,6 @@ import { MdOutlineFlipCameraAndroid } from "react-icons/md";
 function Header() {
 
   const {flip, setFlip} = useContext(GlobalContext)
-  console.log(flip)
 
   return (
     <div className='Header'>
