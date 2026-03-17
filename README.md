@@ -1,16 +1,22 @@
-# React + Vite
+## Projeto em desenvolvimento
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Sobre
 
-Currently, two official plugins are available:
+Aplicação voltada para produtividade
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Receba cartas de pokemon diáriamente ao completar suas metas
 
-## React Compiler
+O sistema conta atualmente com 1024 cartas com as variações normal e shiny
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Atinja seus objetivos e complete sua pokédex
 
-## Expanding the ESLint configuration
+### Informações Técnicas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Feito inteiramente em ReactJS, salva algumas informações no supabase.
+
+O motivo de não existir um backend é para que seja facil de hospedar e para não haver gastos ou lentidão com hospedagem de backend
+
+Por questões de velocidade na cosulta de informações em vez de usar diretamente a base de dados da PokéApi eu salvei as informações de 1024 cartas localmente em um arquivo json
+
+Até o momento o projeto é voltado para uso pessoal, provalvemente não haverá um sistema de cadastro de usuários e os interessado terão que criar manulmente sua conta no supabase e configurar as tabelas e conexão
+
